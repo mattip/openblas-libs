@@ -6,7 +6,7 @@ our_wd=$(cygpath "$START_DIR")
 cd $our_wd
 
 pushd OpenBLAS
-VERSION=$(git describe --tags)
+VERSION=$(git describe --tags)-buffersize20
 popd
 
 if [ "$OPENBLAS_LIBS_STAGING_UPLOAD_TOKEN" == "" ]; then
@@ -17,7 +17,7 @@ else
 
     anaconda -t $OPENBLAS_LIBS_STAGING_UPLOAD_TOKEN upload \
             --no-progress --force -u multibuild-wheels-staging \
-            -t file -p "openblas-libs" -v "$VERSION" \
+            -t file -p "openblas-libs" -v"$VERSION" \
             -d "OpenBLAS for multibuild wheels" \
             -s "OpenBLAS for multibuild wheels" \
             builds/openblas*.zip
