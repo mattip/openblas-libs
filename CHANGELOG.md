@@ -1,5 +1,8 @@
 ## OpenBLAS v0.3.33
 
+### 0.3.33.201.0 (2026-07-05)
+- Update to v0.3.33.201
+
 ### 0.3.33.112.1 (2026-06-21)
 - chore: update cibuildwheel to v4.1.0
 - chore: remove custom clang install script
