@@ -33,11 +33,11 @@ jobs:
           - { os: ubuntu-latest, PLAT: x86_64, INTERFACE64: '0', MB_ML_VER: '_2_28', MB_ML_LIBC: manylinux}
           - { os: ubuntu-latest, PLAT: x86_64, INTERFACE64: '1', MB_ML_VER: '_2_28', MB_ML_LIBC: manylinux}
 
-          - { os: macos-14, PLAT: x86_64, INTERFACE64: '0', MB_ML_LIBC: macosx}
-          - { os: macos-14, PLAT: x86_64, INTERFACE64: '1', MB_ML_LIBC: macosx}
+          - { os: macos-15, PLAT: x86_64, INTERFACE64: '0', MB_ML_LIBC: macosx}
+          - { os: macos-15, PLAT: x86_64, INTERFACE64: '1', MB_ML_LIBC: macosx}
 
-          - { os: macos-latest, PLAT: arm64, INTERFACE64: '0', MB_ML_LIBC: macosx}
-          - { os: macos-latest, PLAT: arm64, INTERFACE64: '1', MB_ML_LIBC: macosx}
+          - { os: macos-15, PLAT: arm64, INTERFACE64: '0', MB_ML_LIBC: macosx}
+          - { os: macos-15, PLAT: arm64, INTERFACE64: '1', MB_ML_LIBC: macosx}
 
           - { os: ubuntu-latest, PLAT: x86_64, INTERFACE64: '0', MB_ML_VER: '_1_2', MB_ML_LIBC: musllinux}
           - { os: ubuntu-latest, PLAT: x86_64, INTERFACE64: '1', MB_ML_VER: '_1_2', MB_ML_LIBC: musllinux}
@@ -70,15 +70,11 @@ jobs:
         submodules: recursive
         fetch-depth: 0
 
-    - uses: maxim-lobanov/setup-xcode@v1.7.0
-      if: ${{ matrix.os == 'macos-latest' }}
-      with:
-        xcode-version: '16.0'
-
-    - uses: maxim-lobanov/setup-xcode@v1.7.0
-      if: ${{ matrix.os == 'macos-14' }}
-      with:
-        xcode-version: '15.4'
+    - name: Set up Xcode
+      if: ${{ startsWith(matrix.os, 'macos-15') }}
+      run: |
+        # GitHub recommends explicitly selecting the desired Xcode version
+        sudo xcode-select --switch /Applications/Xcode_16.4.app
 
     - name: Set up QEMU
       if: matrix.PLAT == 'ppc64le' || matrix.PLAT == 's390x' || matrix.PLAT == 'riscv64'
