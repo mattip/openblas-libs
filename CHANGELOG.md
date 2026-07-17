@@ -1,7 +1,7 @@
-## OpenBLAS v0.3.34
+## OpenBLAS v0.3.34 (v0.3.34)
 
-### 0.3.34.0.0 (2026-07-17)
-- Update to OpenBLAS 0.3.34
+### 0.3.34.0 (2026-07-17)
+- update to v0.3.34
 
 ## OpenBLAS v0.3.33
 
