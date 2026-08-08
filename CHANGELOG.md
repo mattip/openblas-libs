@@ -1,5 +1,8 @@
 ## OpenBLAS v0.3.34 (v0.3.34)
 
+### 0.3.34.106.0 (2026-08~08)
+- pick up a fix for windows threading
+
 ### 0.3.34.0.0 (2026-07-17)
 - update to v0.3.34
 
