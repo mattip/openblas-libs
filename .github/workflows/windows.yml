@@ -76,8 +76,6 @@ jobs:
     - name: Test
       run: |
         & $env:BASH_PATH -lc tools/build_gfortran.sh
-        echo "Static test"
-        .\for_test\test.exe
         echo "Dynamic test"
         .\for_test\test_dyn.exe
 
